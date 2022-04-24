@@ -1,4 +1,4 @@
-package net.numa08.rdblogger.net.numa08.rdblogger.database
+package net.numa08.rdblogger.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

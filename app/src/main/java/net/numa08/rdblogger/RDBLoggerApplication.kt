@@ -2,7 +2,7 @@ package net.numa08.rdblogger
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
-import net.numa08.rdblogger.net.numa08.rdblogger.database.DatabaseLogger
+import net.numa08.rdblogger.database.DatabaseLogger
 import timber.log.Timber
 import javax.inject.Inject
 

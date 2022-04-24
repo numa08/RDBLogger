@@ -7,8 +7,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import net.numa08.rdblogger.net.numa08.rdblogger.database.LogDao
-import net.numa08.rdblogger.net.numa08.rdblogger.database.LogDatabase
+import net.numa08.rdblogger.database.LogDao
+import net.numa08.rdblogger.database.LogDatabase
 import javax.inject.Singleton
 
 @Module
