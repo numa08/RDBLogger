@@ -19,6 +19,12 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += mapOf("room.schemaLocation" to "$projectDir/schemas")
+            }
+        }
     }
 
     buildTypes {
@@ -51,6 +57,9 @@ dependencies {
     implementation("androidx.compose.ui:ui:${Dependencies.composeVersion}")
     implementation("androidx.compose.material:material:${Dependencies.composeVersion}")
     implementation("androidx.compose.ui:ui-tooling-preview:${Dependencies.composeVersion}")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:${Dependencies.lifecycleRuntime}")
+    implementation("androidx.navigation:navigation-compose:${Dependencies.navigation}")
+    implementation("androidx.hilt:hilt-navigation-compose:${Dependencies.hiltNavigation}")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:${Dependencies.lifecycleRuntime}")
     implementation("androidx.activity:activity-compose:${Dependencies.activityCompose}")
     implementation("androidx.room:room-runtime:${Dependencies.roomVersion}")
