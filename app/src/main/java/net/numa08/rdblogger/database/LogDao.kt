@@ -2,6 +2,7 @@ package net.numa08.rdblogger.database
 
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
+import java.time.ZonedDateTime
 
 @Dao
 interface LogDao {
@@ -13,7 +14,7 @@ interface LogDao {
     fun allLogEntry(): Flow<List<LogEntry>>
 
     @Query("SELECT * FROM LogEntry WHERE timestamp BETWEEN :fromTimestamp AND :toTimestamp AND isSynced != 1")
-    suspend fun logEntryBetween(fromTimestamp: Long, toTimestamp: Long): List<LogEntry>
+    suspend fun logEntryBetween(fromTimestamp: ZonedDateTime, toTimestamp: ZonedDateTime): List<LogEntry>
 
     @Update
     suspend fun updateLogEntry(vararg logEntry: LogEntry)

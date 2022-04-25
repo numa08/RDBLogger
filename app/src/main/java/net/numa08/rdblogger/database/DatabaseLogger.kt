@@ -6,6 +6,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import net.numa08.rdblogger.di.IODispatcher
 import timber.log.Timber
+import java.time.ZonedDateTime
 import java.util.*
 import javax.inject.Inject
 
@@ -22,7 +23,7 @@ class DatabaseLogger @Inject constructor(
         } ?: message
         val logEntry = LogEntry(
             id = UUID.randomUUID().toString(),
-            timestamp = Date().time,
+            timestamp = ZonedDateTime.now(),
             logLevel = priority,
             tag = tag,
             text = logMessage,

@@ -4,13 +4,10 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import net.numa08.rdblogger.database.LogEntry
-import java.time.Instant
-import java.time.ZoneId
-import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
-class JsonLogFormatter @Inject constructor(): LogFormatter {
+class JsonLogFormatter @Inject constructor() : LogFormatter {
     @Serializable
     data class LogJsonEntry(
         val id: String,
@@ -35,11 +32,7 @@ class JsonLogFormatter @Inject constructor(): LogFormatter {
 
 val LogEntry.toJsonEntry: JsonLogFormatter.LogJsonEntry
     get() {
-        val dateTime = ZonedDateTime
-            .ofInstant(
-                Instant.ofEpochMilli(timestamp),
-                ZoneId.systemDefault()
-            ).format(DateTimeFormatter.ISO_OFFSET_DATE_TIME)
+        val dateTime = timestamp.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME)
         return JsonLogFormatter.LogJsonEntry(
             id = id,
             timestamp = dateTime,

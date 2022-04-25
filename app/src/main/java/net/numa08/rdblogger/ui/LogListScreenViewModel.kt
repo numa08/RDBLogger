@@ -37,11 +37,7 @@ class LogListScreenViewModel @Inject constructor(
 
 val LogEntry.toItemRow: LogListRowItem
     get() {
-        val dateTime = ZonedDateTime
-            .ofInstant(
-                Instant.ofEpochMilli(timestamp),
-                ZoneId.systemDefault()
-            ).format(DateTimeFormatter.ISO_OFFSET_DATE_TIME)
+        val dateTime = timestamp.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME)
         return LogListRowItem(
             id = id,
             date = dateTime,
