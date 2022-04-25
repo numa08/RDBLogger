@@ -1,26 +1,26 @@
 package net.numa08.rdblogger.di
 
+import android.content.Context
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
+import java.nio.file.Path
 import javax.inject.Qualifier
-import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object CoroutineModule {
+object FileModule {
 
-    @IODispatcher
+    @CacheDir
     @Provides
-    @Singleton
-    fun providesCoroutineDispatcher(): CoroutineDispatcher
-        = Dispatchers.IO
+    fun providesCacheDir(
+        @ApplicationContext context: Context
+    ): Path = context.cacheDir.toPath()
 
 }
 
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
-annotation class IODispatcher
+annotation class CacheDir

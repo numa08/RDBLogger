@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
+    kotlin("plugin.serialization") version "1.6.10"
 }
 
 android {
@@ -68,6 +69,7 @@ dependencies {
     implementation("androidx.room:room-ktx:${Dependencies.roomVersion}")
     implementation("com.jakewharton.timber:timber:${Dependencies.timber}")
     implementation("com.google.dagger:hilt-android:${Dependencies.hiltPlugin}")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
     kapt("com.google.dagger:hilt-android-compiler:${Dependencies.hiltPlugin}")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")

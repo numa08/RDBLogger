@@ -9,10 +9,30 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import timber.log.Timber
 
 @Composable
 fun MainScreen(
+    viewModel: MainScreenViewModel = hiltViewModel(),
+    navigateNext: () -> Unit = {}
+) {
+    val dumpedLogPath = viewModel.dumpedLogPath?.toAbsolutePath()?.toString()
+    val onClickDumpLog = {
+        viewModel.syncTodayLog()
+    }
+    MainScreen(
+        navigateNext = navigateNext,
+        onClickDumpLog = onClickDumpLog,
+        dumpedLogPath = dumpedLogPath,
+        onClickOpenDumpedLogPath = {
+            viewModel.openDumpedFile()
+        }
+    )
+}
+
+@Composable
+private fun MainScreen(
     navigateNext: () -> Unit = {},
     onClickDumpLog: () -> Unit = {},
     dumpedLogPath: String? = null,

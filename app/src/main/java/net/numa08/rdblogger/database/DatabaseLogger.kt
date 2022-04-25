@@ -4,13 +4,14 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import net.numa08.rdblogger.di.IODispatcher
 import timber.log.Timber
 import java.util.*
 import javax.inject.Inject
 
 class DatabaseLogger @Inject constructor(
     private val logDao: LogDao,
-    dispatcher: CoroutineDispatcher
+    @IODispatcher dispatcher: CoroutineDispatcher
 ) : Timber.Tree() {
 
     private val scope = CoroutineScope(dispatcher + Job())
