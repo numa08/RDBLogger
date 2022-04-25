@@ -10,9 +10,6 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import net.numa08.rdblogger.database.LogDao
 import net.numa08.rdblogger.database.LogEntry
-import java.time.Instant
-import java.time.ZoneId
-import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
